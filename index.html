@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TRAZO · Grupo estudiantil de Vías e Infraestructura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asfalto:#23272b; --concreto:#e9e8e4; --papel:#f6f5f2; --linea:#c9c7c0;
+  --amarillo:#f2b705; --señal:#0b6b4f; --texto:#23272b; --suave:#5d6166;
+  --bg:var(--concreto); --bg2:var(--papel); --fg:var(--texto);
+  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1d20;--bg2:#23272b;--fg:#ecebe7;--suave:#a4a8ad;--linea:#3a3f44}}
+:root[data-theme="dark"]{--bg:#1a1d20;--bg2:#23272b;--fg:#ecebe7;--suave:#a4a8ad;--linea:#3a3f44}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--asfalto);color:#fff}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:800 28px/1 var(--display);letter-spacing:.06em;text-decoration:none}
+.logo b{color:var(--amarillo)}
+.links{display:flex;gap:4px;overflow-x:auto}
+.links a{padding:8px 12px;text-decoration:none;font-weight:500;font-size:15px;color:#cfd2d5;border-bottom:3px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
+.links a:hover{color:#fff}
+.links a.on{color:#fff;border-color:var(--amarillo)}
+.prog{height:4px;background:repeating-linear-gradient(90deg,#5a5f64 0 14px,transparent 14px 26px)}
+.prog i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--amarillo) 0 14px,transparent 14px 26px)}
+
+/* hero */
+.hero{padding:88px 0 0;background:var(--asfalto);color:#fff;position:relative;overflow:hidden}
+.hero h1{font:800 clamp(52px,10vw,116px)/.92 var(--display);margin:0 0 24px;max-width:11ch;text-transform:uppercase;letter-spacing:.005em}
+.hero p{font-size:20px;max-width:46ch;color:#d4d6d8;margin:0 0 36px}
+.btn{display:inline-block;background:var(--amarillo);color:#1b1d1f;font-weight:600;padding:14px 26px;text-decoration:none;border-radius:4px;transition:transform .15s,background .15s}
+.btn:hover{background:#ffc928;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border:2px solid #6b7075;margin-left:10px}
+.btn.ghost:hover{background:#2f3438}
+.road{height:72px;margin-top:72px;position:relative;border-top:2px solid #4a4f54}
+.road::after{content:"";position:absolute;left:0;right:0;top:50%;height:6px;transform:translateY(-50%);
+  background:repeating-linear-gradient(90deg,var(--amarillo) 0 56px,transparent 56px 112px);
+  background-size:112px 6px;animation:ruta 2.4s linear infinite}
+@keyframes ruta{to{background-position:-112px 0}}
+
+/* sections */
+section{padding:88px 0}
+section.alt{background:var(--bg2)}
+h2{font:700 clamp(36px,5vw,56px)/1 var(--display);margin:0 0 12px;text-transform:uppercase}
+.lead{max-width:60ch;color:var(--suave);margin:0 0 44px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* datos */
+.datos{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--fg);margin-bottom:56px}
+.datos div{padding:18px 16px 0 0}
+.datos strong{display:block;font:800 48px/1 var(--display)}
+.datos span{color:var(--suave);font-size:15px}
+
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.areas h3{font:700 26px/1.1 var(--display);margin:0 0 8px;padding-top:14px;border-top:6px solid var(--amarillo);text-transform:uppercase}
+.areas p{margin:0;color:var(--suave)}
+
+/* listas */
+.fila{display:grid;grid-template-columns:1.4fr 2fr auto;gap:20px;align-items:baseline;padding:20px 0;border-top:1px solid var(--linea)}
+.fila:last-child{border-bottom:1px solid var(--linea)}
+.fila h3{margin:0;font:700 26px/1.1 var(--display)}
+.fila p{margin:0;color:var(--suave)}
+.tag{font-size:13px;font-weight:600;padding:4px 12px;border-radius:99px;background:var(--señal);color:#fff;white-space:nowrap}
+.tag.curso{background:var(--amarillo);color:#1b1d1f}
+.tag.fin{background:#5d6166}
+.tag.sello{background:transparent;color:var(--fg);border:1.5px solid var(--fg)}
+
+.equipo{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.pers b{display:block;font:700 24px/1.1 var(--display)}
+.pers span{color:var(--suave);font-size:15px}
+.ini{width:64px;height:64px;border-radius:50%;background:var(--asfalto);color:var(--amarillo);display:grid;place-items:center;font:700 24px var(--display);margin-bottom:14px}
+
+/* contacto: cartel de señalización */
+.cartel{background:var(--señal);color:#fff;border:6px solid #fff;outline:3px solid var(--señal);border-radius:14px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;margin:6px}
+.cartel h2{color:#fff;margin-bottom:10px}
+.cartel p{margin:0;color:#dff3ea}
+.cartel ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cartel a{text-decoration:none;border-bottom:2px solid var(--amarillo)}
+footer{background:var(--asfalto);color:#aeb2b6;padding:28px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .datos,.equipo{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .areas{grid-template-columns:1fr}
+  .fila{grid-template-columns:1fr;gap:6px}
+  .fila .tag{justify-self:start;margin-top:6px}
+  .cartel{grid-template-columns:1fr;padding:28px}
+  .hero{padding-top:56px} section{padding:64px 0}
+  .btn.ghost{margin:10px 0 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .road::after{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap"><nav>
+    <a class="logo" href="#inicio">TRAZ<b>O</b></a>
+    <div class="links">
+      <a href="#inicio">Inicio</a><a href="#hacemos">Qué hacemos</a><a href="#proyectos">Proyectos</a>
+      <a href="#alianzas">Alianzas</a><a href="#equipo">Equipo</a><a href="#unete">Únete</a>
+    </div>
+  </nav></div>
+  <div class="prog"><i id="bar"></i></div>
+</header>
+
+<main>
+<div class="hero" id="inicio">
+  <div class="wrap">
+    <h1>Pensamos las vías del país</h1>
+    <p>Somos el grupo estudiantil de Vías e Infraestructura de la Universidad Tecnológica del Pacífico. Estudiamos, diseñamos y visitamos obras para aprender cómo se conecta un territorio.</p>
+    <a class="btn" href="#unete">Quiero unirme</a><a class="btn ghost" href="#proyectos">Ver proyectos</a>
+  </div>
+  <div class="road" aria-hidden="true"></div>
+</div>
+
+<section id="hacemos">
+  <div class="wrap">
+    <h2 class="reveal">Qué hacemos</h2>
+    <p class="lead reveal">Desde 2017 reunimos estudiantes de Ingeniería Civil, Geomática y Arquitectura alrededor de carreteras, puentes y movilidad.</p>
+    <div class="datos reveal">
+      <div><strong>2017</strong><span>año de fundación</span></div>
+      <div><strong>68</strong><span>miembros activos</span></div>
+      <div><strong>14</strong><span>proyectos realizados</span></div>
+      <div><strong>5</strong><span>convenios vigentes</span></div>
+    </div>
+    <div class="areas reveal">
+      <div><h3>Diseño vial</h3><p>Trazo geométrico, drenaje y pavimentos con software de diseño y práctica en campo.</p></div>
+      <div><h3>Puentes y estructuras</h3><p>Análisis de obras de arte, inspección visual y talleres de mantenimiento.</p></div>
+      <div><h3>Movilidad y ciudad</h3><p>Seguridad vial, transporte público y espacios para peatones y ciclistas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="proyectos">
+  <div class="wrap">
+    <h2 class="reveal">Proyectos</h2>
+    <p class="lead reveal">Trabajos reales, a escala de estudiantes.</p>
+    <div class="reveal">
+      <div class="fila"><h3>Camino rural Quebrada Seca</h3><p>Diseño de 4,2 km de trocha con drenaje para la comunidad de Quebrada Seca.</p><span class="tag curso">En curso</span></div>
+      <div class="fila"><h3>Auditoría de seguridad vial</h3><p>Evaluación de 12 cruces peatonales cerca del campus, con propuesta de mejoras.</p><span class="tag curso">En curso</span></div>
+      <div class="fila"><h3>Inspección del puente Los Álamos</h3><p>Levantamiento de daños y registro fotográfico junto a la municipalidad.</p><span class="tag">Finalizado</span></div>
+      <div class="fila"><h3>Concurso de puentes de espagueti</h3><p>Competencia anual entre universidades; en 2025 obtuvimos el segundo lugar.</p><span class="tag fin">Anual</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="alianzas">
+  <div class="wrap">
+    <h2 class="reveal">Alianzas y convenios</h2>
+    <p class="lead reveal">Nuestros socios nos abren obras, laboratorios y prácticas.</p>
+    <div class="reveal">
+      <div class="fila"><h3>Constructora Andina S.A.</h3><p>Visitas a obra y prácticas preprofesionales para 10 estudiantes al año.</p><span class="tag">Convenio</span></div>
+      <div class="fila"><h3>Municipalidad de Valle Verde</h3><p>Apoyo técnico en inspecciones de puentes y señalización urbana.</p><span class="tag">Convenio</span></div>
+      <div class="fila"><h3>Laboratorio de Suelos y Pavimentos UTP</h3><p>Uso de equipos para ensayos de suelos, asfalto y concreto.</p><span class="tag">Convenio</span></div>
+      <div class="fila"><h3>Colegio de Ingenieros, capítulo regional</h3><p>Charlas, mentorías y certificaciones con descuento para miembros.</p><span class="tag sello">Alianza</span></div>
+      <div class="fila"><h3>Asociación Peruana de Vialidad (ficticia)</h3><p>Acceso a seminarios y publicaciones técnicas.</p><span class="tag sello">Alianza</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="equipo">
+  <div class="wrap">
+    <h2 class="reveal">Equipo directivo 2026</h2>
+    <p class="lead reveal">Estudiantes de últimos ciclos que coordinan el grupo.</p>
+    <div class="equipo reveal">
+      <div class="pers"><div class="ini">VR</div><b>Valeria Ríos</b><span>Presidenta · Ing. Civil</span></div>
+      <div class="pers"><div class="ini">MC</div><b>Mateo Campos</b><span>Vicepresidente · Ing. Civil</span></div>
+      <div class="pers"><div class="ini">LQ</div><b>Lucía Quispe</b><span>Proyectos · Geomática</span></div>
+      <div class="pers"><div class="ini">DH</div><b>Diego Huamán</b><span>Alianzas · Arquitectura</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="unete">
+  <div class="wrap">
+    <div class="cartel reveal">
+      <div>
+        <h2>Únete a TRAZO</h2>
+        <p>Abrimos inscripciones cada ciclo. No necesitas experiencia, solo ganas de aprender y salir a campo.</p>
+      </div>
+      <ul>
+        <li>Correo: <a href="mailto:contacto@trazo-utp.example">contacto@trazo-utp.example</a></li>
+        <li>Instagram: <a href="#unete">@trazo.utp</a></li>
+        <li>Reuniones: jueves 6:00 p. m., aula B-204</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 TRAZO · Grupo estudiantil de Vías e Infraestructura</span><span>Página de ejemplo con datos inventados</span></div></footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?h.scrollTop/m*100:0)+'%'}
+  addEventListener('scroll',prog,{passive:true});prog();
+
+  var links=[].slice.call(document.querySelectorAll('.links a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function activa(){
+    var y=scrollY+120,i=0;
+    secs.forEach(function(s,k){if(s&&s.offsetTop<=y)i=k});
+    links.forEach(function(a,k){a.classList.toggle('on',k===i)});
+  }
+  addEventListener('scroll',activa,{passive:true});activa();
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('show')})}
+})();
+</script>
+</body>
+</html>
